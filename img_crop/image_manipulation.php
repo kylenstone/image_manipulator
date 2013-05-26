@@ -17,7 +17,7 @@ if (isset($_POST['upload_form_submitted'])) {
 			$error = "Error: A file with that name already exists";
 		} else if (!in_array(substr($fileExt[0], 1), $allowedExtensions)) {
 			$error = 'Error: Invalid file format - please upload a picture file';
-		} else if (!copy($_FILES['img_upload']['tmp_name'], $newPath)) {
+		} else if (!copy($_FILES['img']['tmp_name'], $newPath)) {
 			$error = 'Error: Could not save file to server';
 		} else {
 			$_SESSION['newPath'] = $newPath;
