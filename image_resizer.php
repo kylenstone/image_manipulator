@@ -10,6 +10,12 @@ if (isset($_POST['upload_form_submitted'])) {
 	} else if (!isset($_POST['img_name']) || empty($_POST['img_name'])) {
 		$error = "Error: You didn't specify a file name";
 	} else {
+		if (!preg_match('?', $_POST['img_name'])) {
+			// mixed str_replace ( mixed $search , mixed $replace , mixed $subject [, int &$count ] )
+			$_POST['img_name'] = str_replace("?", "img", $_POST['img_name']);
+			$error = "File name cleaned!"; 
+		} 
+
 		$allowedExtensions = array('jpg', 'jpeg', 'gif', 'png');
 		preg_match('/\.('.implode($allowedExtensions, '|').')$/', $_FILES['img_upload']['name'], $fileExt);
 		$newPath = 'imgs/'.$_POST['img_name'].'.'.$fileExt[1];

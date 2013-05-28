@@ -1,2 +1,0 @@
-# This directory is required by image_resizer.php and should be copied along with the project.
-# Uploaded images will be saved here.
